@@ -1,0 +1,18 @@
+package com.ecom.paymentservice.dto;
+
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
+import java.math.BigDecimal;
+
+@Data
+public class PaymentRequest {
+
+    @NotNull
+    private Long orderId;
+
+    @NotNull
+    @DecimalMin(value = "0.0", inclusive = false)
+    private BigDecimal amount;
+}
