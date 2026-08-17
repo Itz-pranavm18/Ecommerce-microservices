@@ -21,14 +21,7 @@ public class OrderService {
     private final ProductClient productClient;
     private final PaymentClient paymentClient;
 
-    /*
-     * Simple happy-path saga (no distributed rollback/compensation logic — kept
-     * intentionally simple for a learning project):
-     *   1. Fetch each product via Feign -> validate stock
-     *   2. Reduce stock via Feign for each item
-     *   3. Call Payment Service via Feign
-     *   4. Persist the order with the resulting status
-     */
+
     @Transactional
     public OrderResponse placeOrder(PlaceOrderRequest request) {
         Order order = new Order();
